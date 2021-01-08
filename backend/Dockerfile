@@ -1,5 +1,5 @@
 FROM node:12.18.1
-ENV NODE_ENVproduction
+ENV NODE_ENV production
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
