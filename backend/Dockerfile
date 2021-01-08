@@ -1,20 +1,22 @@
-FROM node:12.18.1
-ENV NODE_ENV production
-
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
-
-WORKDIR /home/node/app
-
+FROM node:current-alpine AS base
+WORKDIR /base
 COPY package*.json ./
-
-USER node
-
 RUN npm install
+COPY . .
 
-COPY --chown=node:node . .
+FROM base AS build
+ENV NODE_ENV=production
+WORKDIR /build
+COPY --from=base /base ./
+RUN npm run build
 
-EXPOSE 8080
+FROM node:current-alpine AS production
+ENV NODE_ENV=production
+WORKDIR /app
+COPY --from=build /build/package*.json ./
+COPY --from=build /build/.next ./.next
+COPY --from=build /build/public ./public
+RUN npm install next
 
-RUN next build
-
-CMD [ "node", "server.js" ]
+EXPOSE 3000
+CMD ["node","server.js"]
