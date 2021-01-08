@@ -15,4 +15,6 @@ COPY --chown=node:node . .
 
 EXPOSE 8080
 
+RUN next build
+
 CMD [ "node", "server.js" ]
