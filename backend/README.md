@@ -1,81 +1,30 @@
-# sample_app_23668
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-This is a repository for a web application developed with Django, built with [Crowdbotics](https://crowdbotics.com)
+## Getting Started
 
-### Features
+First, run the development server:
 
-1. **Local Authentication** using email and password with [allauth](https://pypi.org/project/django-allauth/)
-2. **Rest API** using [django rest framework](http://www.django-rest-framework.org/)
-3. **Forgot Password**
-4. Bootstrap4
-5. Toast Notification
-6. Inline content editor in homepage
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-# Development
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Following are instructions on setting up your development environment.
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-The recommended way for running the project locally and for development is using Docker.
+## Learn More
 
-It's possible to also run the project without Docker.
+To learn more about Next.js, take a look at the following resources:
 
-## Docker Setup (Recommended)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-This project is set up to run using [Docker Compose](https://docs.docker.com/compose/) by default. It is the recommended way. You can also use existing Docker Compose files as basis for custom deployment, e.g. [Docker Swarm](https://docs.docker.com/engine/swarm/), [kubernetes](https://kubernetes.io/), etc.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-1. Install Docker:
-   - Linux - [get.docker.com](https://get.docker.com/)
-   - Windows or MacOS - [Docker Desktop](https://www.docker.com/products/docker-desktop)
-1. Clone this repo and `cd sample_app_23668`
-1. Make sure `Pipfile.lock` exists. If it doesn't, generate it with:
-   ```sh
-   $ docker run -it --rm -v "$PWD":/django -w /django python:3.7 pip3 install --no-cache-dir -q pipenv && pipenv lock
-   ```
-1. Use `.env.example` to create `.env`:
-   ```sh
-   $ cp .env.example .env
-   ```
-1. Update `.env` and `docker-compose.override.yml` replacing all `<placeholders>`
-1. Start up the containers:
+## Deploy on Vercel
 
-   ```sh
-   $ docker-compose up
-   ```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-   This will build the necessary containers and start them, including the web server on the host and port you specified in `.env`.
-
-   Current (project) directroy will be mapped with the container meaning any edits you make will be picked up by the container.
-
-1. Seed the Postgres DB (in a separate terminal):
-   ```sh
-   $ docker-compose exec web python3 manage.py makemigrations
-   $ docker-compose exec web python3 manage.py migrate
-   ```
-1. Create a superuser if required:
-   ```sh
-   $ docker-compose exec web python3 manage.py createsuperuser
-   ```
-   You will find an activation link in the server log output.
-
-## Local Setup (Alternative to Docker)
-
-1. [Postgresql](https://www.postgresql.org/download/)
-2. [Python](https://www.python.org/downloads/release/python-365/)
-
-### Installation
-
-1. Install [pipenv](https://pypi.org/project/pipenv/)
-2. Clone this repo and `cd sample_app_23668`
-3. Run `pip install --user --upgrade pipenv` to get the latest pipenv version.
-4. Run `pipenv --python 3.6`
-5. Run `pipenv install`
-6. Run `cp .env.example .env`
-7. Update .env file `DATABASE_URL` with your `database_name`, `database_user`, `database_password`, if you use postgresql.
-   Can alternatively set it to `sqlite:////tmp/my-tmp-sqlite.db`, if you want to use sqlite for local development.
-
-### Getting Started
-
-1. Run `pipenv shell`
-2. Run `python manage.py makemigrations`
-3. Run `python manage.py migrate`
-4. Run `python manage.py runserver`
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
