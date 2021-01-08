@@ -13,7 +13,7 @@ import {
 
 import AddAdmin from "./AddAdmin";
 import Admins from "./Admins";
-import EditAdmin from "./EditAdmin";
+import EditAdmin from "./editAdmin";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
