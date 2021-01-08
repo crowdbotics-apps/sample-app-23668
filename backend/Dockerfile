@@ -1,17 +1,21 @@
-FROM node:10-alpine
+FROM node:12
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+ENV PORT 3000
 
-WORKDIR /home/node/app
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-COPY package*.json ./
-
-USER node
-
+# Installing dependencies
+COPY package*.json /usr/src/app/
 RUN npm install
 
-COPY --chown=node:node . .
+# Copying source files
+COPY . /usr/src/app
 
-EXPOSE 8080
+# Building app
+RUN npm run build
+EXPOSE 3000
 
-CMD [ "node", "server.js" ]
+# Running the app
+CMD "npm" "run" "start"
