@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "prestart": "next build"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
@@ -15,6 +14,7 @@
     "body-parser": "^1.19.0",
     "clsx": "^1.1.1",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "firebase-admin": "^9.4.1",
     "next": "10.0.3",
     "react": "^17.0.1",

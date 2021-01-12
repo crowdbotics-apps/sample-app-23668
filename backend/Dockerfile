@@ -11,7 +11,10 @@ COPY package* ./
 # Install the npm packages
 RUN npm install
 
+
 COPY . .
+
+RUN npm run build
 
 # Run the image as a non-root user
 RUN adduser -D myuser
