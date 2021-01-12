@@ -2,9 +2,6 @@ build:
   docker:
     web: Dockerfile
   config:
-    DEBUG_COLLECTSTATIC: 1
-    SECRET_KEY: build
-release:
-  image: web
-  # command:
-  #   - python3 manage.py migrate
+    NODE_ENV: production
+run:
+  web: npm start

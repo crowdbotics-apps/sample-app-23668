@@ -1,0 +1,26 @@
+version: '3.4'
+
+networks:
+  internal:
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        - NODE_ENV=production
+    container_name: heroku-dockerize-web
+
+    networks:
+      - internal
+    ports:
+      - '3000:${PORT}'
+    env_file:
+      - .env
+    restart: always
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:${PORT}']
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
